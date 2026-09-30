@@ -1,0 +1,6 @@
+# large files
+input_files/SV/intactness_matrix.tsv
+
+# large folders
+TOGA2_output/
+output/SV/plots
