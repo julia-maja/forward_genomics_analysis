@@ -1,33 +1,32 @@
 
-## preparing input for forward genomics with diel data
+## preparing input for forward genomics with fish diel data
 
 
 # phenotype files ---------------------------------------------------------
 
-url <- 'https://docs.google.com/spreadsheets/d/18aNqHT73hX06cGRlf6oj7Y4TVKf6jd_Q5ojNIxm2rys/edit?gid=0#gid=0'
-diel_data <- read.csv(text=gsheet2text(url, format='csv'), stringsAsFactors=FALSE) 
-diel_data <- diel_data %>% mutate(Species_name = str_replace_all(Species_name, " ", "_"))
+diel_data <- readRDS("~/Desktop/trait_data_fish_expanded.RDS")
+diel_data <- diel_data %>% mutate(species = str_replace_all(species, " ", "_"))
 
 ## diurnal as the focal phenotype
-diurnality_data <- diel_data %>% select(Species_name, Diel_Pattern)
-diurnality_data <- diurnality_data %>% mutate(Diel_Pattern = ifelse(Diel_Pattern == "Diurnal", 1, 0))
-diurnality_data <- diurnality_data %>% rename(species = Species_name) %>% rename(pheno = Diel_Pattern)
+diurnality_data <- diel_data %>% select(species, diel)
+diurnality_data <- diurnality_data %>% mutate(diel = ifelse(grepl("diurnal", diel), 1, 0))
+diurnality_data <- diurnality_data %>% rename(species = species) %>% rename(pheno = diel)
 
 ## nocturnal as the focal phenotype
-nocturnality_data <- diel_data %>% select(Species_name, Diel_Pattern)
-nocturnality_data <- nocturnality_data %>% mutate(Diel_Pattern = ifelse(Diel_Pattern == "Nocturnal", 1, 0))
-nocturnality_data <- nocturnality_data %>% rename(species = Species_name) %>% rename(pheno = Diel_Pattern)
+nocturnality_data <- diel_data %>% select(species, diel)
+nocturnality_data <- nocturnality_data %>% mutate(diel = ifelse(grepl("nocturnal", diel), 1, 0))
+nocturnality_data <- nocturnality_data %>% rename(species = species) %>% rename(pheno = diel)
 
 
 ## crepuscular as the focal phenotype
-crepuscularity_data <- diel_data %>% select(Species_name, Diel_Pattern)
-crepuscularity_data <- crepuscularity_data %>% mutate(Diel_Pattern = ifelse(Diel_Pattern == "Crepuscular", 1, 0))
-crepuscularity_data <- crepuscularity_data %>% rename(species = Species_name) %>% rename(pheno = Diel_Pattern)
+crepuscularity_data <- diel_data %>% select(species, diel)
+crepuscularity_data <- crepuscularity_data %>% mutate(diel = ifelse(grepl("crepuscular", diel), 1, 0))
+crepuscularity_data <- crepuscularity_data %>% rename(species = species) %>% rename(pheno = diel)
 
 
-write.table(diurnality_data, "diurnality_data.csv", sep = " ", row.names = FALSE, quote = FALSE)
-write.table(nocturnality_data, "nocturnality_data.csv", sep = " ", row.names = FALSE, quote = FALSE)
-write.table(crepuscularity_data, "crepuscularity_data.csv", sep = " ", row.names = FALSE, quote = FALSE)
+#write.table(diurnality_data, "/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish_diel/diurnality_data.csv", sep = " ", row.names = FALSE, quote = FALSE)
+#write.table(nocturnality_data, "/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish_diel/nocturnality_data.csv", sep = " ", row.names = FALSE, quote = FALSE)
+#write.table(crepuscularity_data, "/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish_diel/crepuscularity_data.csv", sep = " ", row.names = FALSE, quote = FALSE)
 
 
 # species overlap with TOGA -----------------------------------------------
@@ -209,8 +208,8 @@ diurn_species <- diurnality_data %>% filter(species %in% TOGA2_output)
 nocturn_species <- nocturnality_data %>% filter(species %in% TOGA2_output)
 crep_species <- crepuscularity_data %>% filter(species %in% TOGA2_output)
 
-write.table(diurn_species, "diurn_species.csv", sep = " ", row.names = FALSE, quote = FALSE)
-write.table(nocturn_species, "nocturn_species.csv", sep = " ", row.names = FALSE, quote = FALSE)
-write.table(crep_species, "crep_species.csv", sep = " ", row.names = FALSE, quote = FALSE)
+write.table(diurn_species, "/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish_diel/diurn_species.csv", sep = " ", row.names = FALSE, quote = FALSE)
+write.table(nocturn_species, "/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish_diel/nocturn_species.csv", sep = " ", row.names = FALSE, quote = FALSE)
+write.table(crep_species, "/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish_diel/crep_species.csv", sep = " ", row.names = FALSE, quote = FALSE)
 
 
