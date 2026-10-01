@@ -1,6 +1,7 @@
 # large files
-input_files/SV/intactness_matrix.tsv
 
 # large folders
-TOGA2_output/
+TOGA2_fish/
+TOGA2_mammal/
 output/SV/plots
+input/matrices/
