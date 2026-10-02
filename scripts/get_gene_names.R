@@ -4,7 +4,7 @@
 library(dplyr)
 
 # read myOputput_with_FDR.txt
-results <- read.csv("myOutput_with_FDR.txt")
+results <- read.delim("myOutput_with_FDR.txt")
 
 
 # genes where all trait-loss species have %intact values lower than all trait-preserving species
