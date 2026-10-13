@@ -9,11 +9,11 @@ library(ggtree)
 library(ggplot2)
 
 # fish, artio, SV, mammal, etc.
-dataset_name <- "SV" # variable ##################################################################
+dataset_name <- "sv.1" # variable ##################################################################
 
 # get the tree
 tree_path <- file.path(
-  "/input",
+  "/Users/juliamaja/Desktop/forward_genomics_analysis/input",
   dataset_name,
   paste0("tree", ".nwk")
 )
@@ -22,7 +22,7 @@ tree <- read.tree(tree_path)
 # get the binary trait data
 trait_data <- "SV_phenotypes" # variable ##################################################################
 trait_path <- file.path(
-  "/input",
+  "/Users/juliamaja/Desktop/forward_genomics_analysis/input",
   dataset_name,
   paste0(trait_data, ".txt")
 )
@@ -32,12 +32,12 @@ trait <- read.delim(trait_path, header = TRUE, sep = " ")
 
 species <- "fish" # variable ##################################################################################
 matrix_path <- file.path(
-  "/input/matrices",
+  "/Users/juliamaja/Desktop/forward_genomics_analysis/input/matrices",
   paste0(species, ".txt")
 )
 gene_data <- read.delim("/Users/juliamaja/Downloads/fish_matrix.tsv") ### placeholder for now ############
 # gene_data <- read.delim(matrix_path)
-gene_name <- "sirt6" # variable ##################################################################################
+gene_name <- "LOC120810392" # variable ##################################################################################
 
 
 gene_intactness <- (gene_data 
