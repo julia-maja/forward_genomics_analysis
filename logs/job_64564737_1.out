@@ -1,0 +1,29 @@
+Array task: 1
+Taxa: artio
+Trait: nocturn_vs_all
+Input directory: /home/majaj/projects/def-mshafer/majaj/forward_genomics/input/artio
+Output directory: /home/majaj/projects/def-mshafer/majaj/forward_genomics/output/artio/nocturn_vs_all
+Package xtermStyle found
+Package phangorn found
+Package weights found
+Package isotone found
+Package caper found
+
+[38;5;9mForward Genomics analysis:
+ bold[0m
+[38;5;9mMethod(s)................................. GLS 
+ bold[0m[38;5;9mList of elements.......................... /home/majaj/projects/def-mshafer/majaj/forward_genomics/input/artio/element_ids.tsv 
+ bold[0m[38;5;9mPhenotype of all species.................. /home/majaj/projects/def-mshafer/majaj/forward_genomics/input/artio/nocturn_vs_all.txt 
+ bold[0m[38;5;9mPhylogenetic tree......................... /home/majaj/projects/def-mshafer/majaj/forward_genomics/input/artio/tree.nwk 
+ bold[0m[38;5;9mOutput file............................... /home/majaj/projects/def-mshafer/majaj/forward_genomics/output/artio/nocturn_vs_all/myOutput.txt 
+ bold[0m[38;5;9mVerbose................................... FALSE 
+ bold[0m[38;5;9m
+Parameters for GLS:
+ bold[0m[38;5;9mGlobal %id values......................... /home/majaj/projects/def-mshafer/majaj/forward_genomics/input/matrices/mammal_matrix.tsv 
+ bold[0m[38;5;9mMin number of independent losses.......... 2 
+ bold[0m[38;5;9mRaw/normalized............................ normalized  (perfect match is computed with raw values only) 
+ bold[0m[38;5;9m
+Reading input data...
+ bold[0m[38;5;9m
+Propagating the phenotypes from the leaves to the branches using Dollo parsimony...
+ bold[0m
