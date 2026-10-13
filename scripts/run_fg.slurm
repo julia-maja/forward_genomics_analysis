@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=forward_genomics
-#SBATCH --array=0-14
+#SBATCH --array=0-6
 #SBATCH --time=05:00:00
 #SBATCH --mem=8G
 #SBATCH --output=/home/majaj/projects/def-mshafer/majaj/forward_genomics/logs/job_%A_%a.out
@@ -13,14 +13,15 @@ export PATH="/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx512/Core/ph
 base_dir="/home/majaj/projects/def-mshafer/majaj/forward_genomics"
 r_script_dir="/home/majaj/projects/def-mshafer/programs/ForwardGenomics/forwardGenomics.R"
 
-taxa_list=("mam_nc" "artio")
+#taxa_list=("mam_nc")
 trait_list=("nocturn_vs_diurn" "nocturn_vs_all" "diurn_vs_nocturn" "diurn_vs_all" "crep_vs_all" "cathem_vs_all" "all_vs_cathem")
 
 task_id=$SLURM_ARRAY_TASK_ID
-taxa=${taxa_list[$task_id]}
+#taxa=${taxa_list[$task_id]}
+taxa="mam_nc"
 trait=${trait_list[$task_id]}
 
-input_dir="$base_dir/input/$taxa"
+input_dir="$base_dir/input/$taxa/$trait"
 output_dir="$base_dir/output/$taxa/$trait"
 
 globalPid="$base_dir/input/matrices/mammal_matrix.tsv"
