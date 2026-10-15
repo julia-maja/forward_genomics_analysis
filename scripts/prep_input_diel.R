@@ -12,7 +12,8 @@ artio <- artio %>% mutate(species = str_replace_all(species, " ", "_"))
 #########################
 ### artio - cetateans ###
 #########################
-artio_nc <- 
+artio_nc <- read.csv("/Users/juliamaja/Desktop/forward_genomics_analysis/input/artio_nc/artiodactyla_no_cetaceans_activity_patterns.csv")
+artio_nc <- artio_nc %>% mutate(species = str_replace_all(species, " ", "_"))
 
 ###############################
 ### all mammals - cetateans ###
@@ -27,8 +28,8 @@ fish <- readRDS("/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish/t
 fish <- fish %>% mutate(species = str_replace_all(species, " ", "_"))
 
 
-diel_data <- artio #user specifies which dataset
-diel_data_name <- "artio"
+diel_data <- artio_nc #user specifies which dataset
+diel_data_name <- "artio_nc"
 
 ## diurnal vs all else
 diurn_vs_all <- diel_data %>% mutate(pheno = ifelse(grepl("diurnal", diel), 1, 0))
