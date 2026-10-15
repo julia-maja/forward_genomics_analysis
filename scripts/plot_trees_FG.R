@@ -37,7 +37,7 @@ matrix_path <- file.path(
 )
 gene_data <- read.delim("/Users/juliamaja/Downloads/fish_matrix.tsv") ### placeholder for now ############
 # gene_data <- read.delim(matrix_path)
-gene_name <- "LOC120810392" # variable ##################################################################################
+gene_name <- "nmur1a" # variable ##################################################################################
 
 
 gene_intactness <- (gene_data 
@@ -52,12 +52,12 @@ gene_intactness[[gene_name]] <- as.numeric(gene_intactness[[gene_name]])
 
 # combine trait and gene data and color tip labels by taxonomic order
 
-SV_data_avg <- read.csv("/Users/juliamaja/Desktop/SV/SV_data_avg.csv")
+SV_data_avg <- read.csv("/Users/juliamaja/Desktop/SV/SV_data_eco.csv")
 
 df <- trait %>% full_join(gene_intactness, by = "species")
 df <- df %>% full_join(SV_data_avg, by = c("species" = "tips"))
 
-plot <- ggtree(tree, layout="circular") %<+% df[, c("species", "pheno", gene_name, "Order")]
+plot <- ggtree(tree, layout="circular") %<+% df[, c("species", "pheno", gene_name, "Order", "salinity", "seasonal_spawning")]
 
 plot <- plot +
   
@@ -81,10 +81,38 @@ plot <- plot +
     width = 3
   ) +
   scale_fill_gradient(
-    low = "red",
-    high = "green"
+    low = "tomato",
+    high = "green3"
   ) +
-  geom_tiplab(aes(color = Order), size = 2, offset = 5, show.legend = FALSE) +
+  ggnewscale::new_scale_fill() +
+  geom_tile(
+    data = plot$data[1:length(tree$tip.label), ],
+    aes(x = x+4, y = y, fill = as.factor(salinity)),
+    inherit.aes = FALSE,
+    color = "transparent",
+    width = 3
+  ) +
+  ggnewscale::new_scale_fill() +
+  scale_fill_manual(
+    values = c(
+      "freshwater" = "blue",
+      "saltwater" = "orange"
+    ),
+    na.value = "grey90"
+  ) +
+  # geom_tile(
+  #   data = plot$data[1:length(tree$tip.label), ],
+  #   aes(x = x+6, y = y, fill = seasonal_spawning),
+  #   inherit.aes = FALSE,
+  #   color = "transparent",
+  #   width = 3
+  # ) +
+  # scale_fill_gradient(
+  #   low = "tomato",
+  #   high = "green3",
+  #   na.value = "white"
+  # ) +
+  geom_tiplab(aes(color = Order), size = 2, offset = 6, show.legend = FALSE) +
   # add invisible points just for legend
   geom_point(aes(x = 0, y = 0, color = Order), shape = 15, size = 4, alpha = 0) +
   scale_color_manual(values = order_colors, guide = guide_legend(override.aes = list(alpha = 1))) 
