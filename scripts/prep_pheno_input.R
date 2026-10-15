@@ -1,12 +1,11 @@
 
 #prep forward genomic input data 
 
-
 #########################
 ### artio + cetaceans ###
 #########################
 # read in artio diel data that overlaps with TOGA2 output
-artio <- read.csv("~/Desktop/artiodactyla_activity_patterns.csv")
+artio <- read.csv("/Users/juliamaja/Desktop/forward_genomics_analysis/input/artio/artiodactyla_activity_patterns.csv")
 artio <- diel_data %>% mutate(species = str_replace_all(species, " ", "_"))
 
 #########################
@@ -17,18 +16,18 @@ artio_nc <-
 ###############################
 ### all mammals - cetateans ###
 ###############################
-mammal_nc <- 
+mam_nc <- readRDS("/Users/juliamaja/Desktop/forward_genomics_analysis/input/mam_nc/mammal_activity_patterns_no_cetaceans.rds")
 
 #################
 ### fish diel ###
 #################
 # read in fish data 
-fish <- readRDS("~/Desktop/trait_data_fish_expanded.RDS")
+fish <- readRDS("/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish/trait_data_fish_expanded.RDS")
 fish <- fish %>% mutate(species = str_replace_all(species, " ", "_"))
 
 
-diel_data <- artio #user specifies which dataset
-diel_data_name <- "artio"
+diel_data <- mam_nc #user specifies which dataset
+diel_data_name <- "mam_nc"
 
 ## diurnal vs all else
 diurn_vs_all <- diel_data %>% mutate(pheno = ifelse(grepl("diurnal", diel), 1, 0))

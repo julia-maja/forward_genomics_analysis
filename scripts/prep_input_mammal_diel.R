@@ -1,13 +1,13 @@
 
 #prep forward genomic input data 
-
+library(dplyr)
 
 #########################
 ### artio + cetaceans ###
 #########################
 # read in artio diel data that overlaps with TOGA2 output
-artio <- read.csv("~/Desktop/artiodactyla_activity_patterns.csv")
-artio <- diel_data %>% mutate(species = str_replace_all(species, " ", "_"))
+artio <- read.csv("/Users/juliamaja/Desktop/forward_genomics_analysis/input/artio/artiodactyla_activity_patterns.csv")
+artio <- artio %>% mutate(species = str_replace_all(species, " ", "_"))
 
 #########################
 ### artio - cetateans ###
@@ -23,7 +23,7 @@ mammal_nc <-
 ### fish diel ###
 #################
 # read in fish data 
-fish <- readRDS("~/Desktop/trait_data_fish_expanded.RDS")
+fish <- readRDS("/Users/juliamaja/Desktop/forward_genomics_analysis/input/fish/trait_data_fish_expanded.RDS")
 fish <- fish %>% mutate(species = str_replace_all(species, " ", "_"))
 
 
