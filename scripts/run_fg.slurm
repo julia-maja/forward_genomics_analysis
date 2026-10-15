@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=forward_genomics
 #SBATCH --array=0-6
-#SBATCH --time=05:00:00
+#SBATCH --time=2-00:00:00
 #SBATCH --mem=8G
 #SBATCH --output=/home/majaj/projects/def-mshafer/majaj/forward_genomics/logs/job_%A_%a.out
 #SBATCH --error=/home/majaj/projects/def-mshafer/majaj/forward_genomics/logs/job_%A_%a.err
