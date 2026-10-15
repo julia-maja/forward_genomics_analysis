@@ -18,7 +18,7 @@ trait_list=("nocturn_vs_diurn" "nocturn_vs_all" "diurn_vs_nocturn" "diurn_vs_all
 
 task_id=$SLURM_ARRAY_TASK_ID
 #taxa=${taxa_list[$task_id]}
-taxa="mam_nc"
+taxa="artio_nc"
 trait=${trait_list[$task_id]}
 
 input_dir="$base_dir/input/$taxa/$trait"
