@@ -1,6 +1,7 @@
 # large files
 
 # large folders
+logs/
 TOGA2_fish/
 TOGA2_mammal/
 input/matrices/
