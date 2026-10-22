@@ -8,12 +8,12 @@ library(ggnewscale)
 library(ggtree)
 library(ggplot2)
 
-# fish, artio, SV, mammal, etc.
+# fish, artio, SV, mam_nc, etc.
 dataset_name <- "sv.1" # variable ##################################################################
 
 # get the tree
 tree_path <- file.path(
-  "/Users/juliamaja/Desktop/forward_genomics_analysis/input",
+  "input",
   dataset_name,
   paste0("tree", ".nwk")
 )
@@ -22,7 +22,7 @@ tree <- read.tree(tree_path)
 # get the binary trait data
 trait_data <- "SV_phenotypes" # variable ##################################################################
 trait_path <- file.path(
-  "/Users/juliamaja/Desktop/forward_genomics_analysis/input",
+  "input",
   dataset_name,
   paste0(trait_data, ".txt")
 )
@@ -32,12 +32,35 @@ trait <- read.delim(trait_path, header = TRUE, sep = " ")
 
 species <- "fish" # variable ##################################################################################
 matrix_path <- file.path(
-  "/Users/juliamaja/Desktop/forward_genomics_analysis/input/matrices",
-  paste0(species, ".txt")
+  "input/matrices",
+  paste0(species, "_matrix.tsv")
 )
-gene_data <- read.delim("/Users/juliamaja/Downloads/fish_matrix.tsv") ### placeholder for now ############
-# gene_data <- read.delim(matrix_path)
-gene_name <- "nmur1a" # variable ##################################################################################
+gene_data <- read.delim(matrix_path)
+
+# top 20 sig genes for sv.1:
+genes <- c("LOC120828872",
+"LOC120820186",
+"LOC120814343",
+"mcm3ap",
+"pcnx4",
+"LOC144390213",
+"ptges",
+"LOC120819019",
+"marchf3",
+"si_dkey_3k24_8",
+"dusp3a",
+"etnppl",
+"chtf18",
+"adamts14",
+"LOC120827732",
+"LOC120809572",
+"LOC120833445",
+"itprid1",
+"clmnb",
+"col20a1")
+
+
+gene_name <- "LOC144390213" # variable ##################################################################################
 
 
 gene_intactness <- (gene_data 
@@ -57,9 +80,9 @@ SV_data_avg <- read.csv("/Users/juliamaja/Desktop/SV/SV_data_eco.csv")
 df <- trait %>% full_join(gene_intactness, by = "species")
 df <- df %>% full_join(SV_data_avg, by = c("species" = "tips"))
 
-plot <- ggtree(tree, layout="circular") %<+% df[, c("species", "pheno", gene_name, "Order", "salinity", "seasonal_spawning")]
+sv_plot <- ggtree(tree, layout="circular") %<+% df[, c("species", "pheno", gene_name, "Order", "salinity", "seasonal_spawning")]
 
-plot <- plot +
+plot <- sv_plot +
   
   geom_tile(
     data = plot$data[1:length(tree$tip.label), ],
@@ -69,8 +92,8 @@ plot <- plot +
     width = 3
   ) +
   scale_fill_gradient(
-    low = "red",
-    high = "green"
+    low = "tomato",
+    high = "green3"
   ) +
   ggnewscale::new_scale_fill() +
   geom_tile(
@@ -84,22 +107,21 @@ plot <- plot +
     low = "tomato",
     high = "green3"
   ) +
-  ggnewscale::new_scale_fill() +
-  geom_tile(
-    data = plot$data[1:length(tree$tip.label), ],
-    aes(x = x+4, y = y, fill = as.factor(salinity)),
-    inherit.aes = FALSE,
-    color = "transparent",
-    width = 3
-  ) +
-  ggnewscale::new_scale_fill() +
-  scale_fill_manual(
-    values = c(
-      "freshwater" = "blue",
-      "saltwater" = "orange"
-    ),
-    na.value = "grey90"
-  ) +
+  # ggnewscale::new_scale_fill() +
+  # geom_tile(
+  #   data = plot$data[1:length(tree$tip.label), ],
+  #   aes(x = x+4, y = y, fill = as.factor(salinity)),
+  #   inherit.aes = FALSE,
+  #   color = "transparent",
+  #   width = 3
+  # ) +
+  # scale_fill_manual(
+  #   values = c(
+  #     "freshwater" = "steelblue",
+  #     "saltwater" = "aquamarine"
+  #   ),
+  #   na.value = "grey90"
+  # ) +
   # geom_tile(
   #   data = plot$data[1:length(tree$tip.label), ],
   #   aes(x = x+6, y = y, fill = seasonal_spawning),
@@ -112,11 +134,11 @@ plot <- plot +
   #   high = "green3",
   #   na.value = "white"
   # ) +
-  geom_tiplab(aes(color = Order), size = 2, offset = 6, show.legend = FALSE) +
+  # geom_tiplab(aes(color = Order), size = 2, offset = 6, show.legend = FALSE) +
   # add invisible points just for legend
-  geom_point(aes(x = 0, y = 0, color = Order), shape = 15, size = 4, alpha = 0) +
-  scale_color_manual(values = order_colors, guide = guide_legend(override.aes = list(alpha = 1))) 
-
+  # geom_point(aes(x = 0, y = 0, color = Order), shape = 15, size = 4, alpha = 0) +
+  # scale_color_manual(values = order_colors, guide = guide_legend(override.aes = list(alpha = 1))) 
+  geom_tiplab(aes(color = "black"), size = 2, offset = 6, show.legend = FALSE)
 plot
 
 

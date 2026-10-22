@@ -1,0 +1,5 @@
+"Category","Term","Count","List Total","Pop Hits","Pop Total","P-Value","Benjamini","Fold Enrichment","Bonferroni","FDR","Fisher Exact","Full Term","User Ids"
+"GOTERM_BP_DIRECT","DNA-templated transcription","14","89","1466","16700","4.30e-2","1.00e+0","1.79","9.95e-1","1.00e+0","2.27e-2","GO:0006351~DNA-templated transcription","LOC120816583,HOXB4A,FOXD2,LOC144390759,NFE2L2A,HOXC13A,ELK3,MBTD1,SATB1A,LOC120810936,ELOCA,LOC120832366,MAF1B,POLR1H"
+"GOTERM_MF_DIRECT","metal ion binding","14","93","1560","17761","5.84e-2","1.00e+0","1.71","9.96e-1","1.00e+0","3.20e-2","GO:0046872~metal ion binding","GALNT7,LOC120817230,RIOK3,YJU2,SLC40A1,GMPR,SLC5A2,NIF3L1,ARL15A,PPP1CAA,LOC120827724,LOC120819099,SMPDL3B,NUDT13"
+"GOTERM_MF_DIRECT","DNA-binding transcription factor activity, RNA polymerase II-specific","10","93","1030","17761","8.54e-2","1.00e+0","1.85","1.00e+0","1.00e+0","4.29e-2","GO:0000981~DNA-binding transcription factor activity, RNA polymerase II-specific","LOC120816583,HOXB4A,SATB1A,LOC120808500,FOXD2,KLF5A,NFE2L2A,HOXC13A,LOC120809703,ELK3"
+
