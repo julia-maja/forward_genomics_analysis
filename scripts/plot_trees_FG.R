@@ -37,30 +37,8 @@ matrix_path <- file.path(
 )
 gene_data <- read.delim(matrix_path)
 
-# top 20 sig genes for sv.1:
-genes <- c("LOC120828872",
-"LOC120820186",
-"LOC120814343",
-"mcm3ap",
-"pcnx4",
-"LOC144390213",
-"ptges",
-"LOC120819019",
-"marchf3",
-"si_dkey_3k24_8",
-"dusp3a",
-"etnppl",
-"chtf18",
-"adamts14",
-"LOC120827732",
-"LOC120809572",
-"LOC120833445",
-"itprid1",
-"clmnb",
-"col20a1")
 
-
-gene_name <- "LOC144390213" # variable ##################################################################################
+gene_name <- "LOC120820186" # variable ##################################################################################
 
 
 gene_intactness <- (gene_data 
@@ -89,7 +67,7 @@ plot <- sv_plot +
     aes(x = x, y = y, fill = pheno),
     inherit.aes = FALSE,
     color = "transparent",
-    width = 3
+    width = 5
   ) +
   scale_fill_gradient(
     low = "tomato",
@@ -98,14 +76,14 @@ plot <- sv_plot +
   ggnewscale::new_scale_fill() +
   geom_tile(
     data = plot$data[1:length(tree$tip.label), ],
-    aes(x = x+2, y = y, fill = .data[[gene_name]]),
+    aes(x = x+5, y = y, fill = .data[[gene_name]]),
     inherit.aes = FALSE,
     color = "transparent",
-    width = 3
+    width = 5
   ) +
   scale_fill_gradient(
-    low = "tomato",
-    high = "green3"
+    low = "coral",
+    high = "palegreen"
   ) +
   # ggnewscale::new_scale_fill() +
   # geom_tile(
@@ -138,7 +116,7 @@ plot <- sv_plot +
   # add invisible points just for legend
   # geom_point(aes(x = 0, y = 0, color = Order), shape = 15, size = 4, alpha = 0) +
   # scale_color_manual(values = order_colors, guide = guide_legend(override.aes = list(alpha = 1))) 
-  geom_tiplab(aes(color = "black"), size = 2, offset = 6, show.legend = FALSE)
+  geom_tiplab(aes(color = "black"), size = 3, offset = 6, show.legend = FALSE)
 plot
 
 

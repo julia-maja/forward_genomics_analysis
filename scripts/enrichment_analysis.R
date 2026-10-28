@@ -139,7 +139,7 @@ go_results <- enrichGO(
 )
 
 dotplot <- dotplot(go_results, showCategory = 20) +
-  ggtitle("GO Biological Processes in Forward Genomics Candidates")
+  ggtitle("GO terms in FG gene candidates")
 dotplot
 
 
@@ -216,6 +216,8 @@ ggplot(
 # DAVID functional annotation chart plotting ------------------------------
 FG_output_path <- file.path("output", paste0(dataset_name, "/DAVID/func_ann_chart.csv"))
 FG_output_path <- file.path("output", paste0(dataset_name, "/DAVID/func_ann_chart_threshold_10.csv"))
+FG_output_path <- file.path("output", paste0(dataset_name, "/DAVID/func_ann_chart_threshold_100.csv"))
+
 david_results <- read.csv(FG_output_path)
 
 david_top <- david_results %>%
@@ -260,8 +262,9 @@ ggplot(
   )
 
 ## pathway and interaction visualization
-pathway <- read.csv("output/sv.1/DAVID/pathway.csv")
-interaction <- read.csv("output/sv.1/DAVID/interaction.csv")
+pathway <- file.path("output", paste0(dataset_name, "/DAVID/pathway.csv"))
+interaction <- file.path("output", paste0(dataset_name, "/DAVID/interaction.csv"))
+
 david_results <- bind_rows(pathway, interaction)
 
 ggplot(
@@ -290,7 +293,7 @@ ggplot(
 
 # kegg pathways -----------------------------------------------------------
 
-kegg_paths <- read.csv("output/sv.1/DAVID/kegg_paths.csv")
+kegg_paths <- file.path("output", paste0(dataset_name, "/DAVID/pathway.csv"))
 length(table(kegg_paths$Gene.Name))
 length(table(kegg_paths$Term))
 
