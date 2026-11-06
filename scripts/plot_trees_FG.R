@@ -116,7 +116,7 @@ plot <- sv_plot +
   # add invisible points just for legend
   # geom_point(aes(x = 0, y = 0, color = Order), shape = 15, size = 4, alpha = 0) +
   # scale_color_manual(values = order_colors, guide = guide_legend(override.aes = list(alpha = 1))) 
-  geom_tiplab(aes(color = "black"), size = 3, offset = 6, show.legend = FALSE)
+  geom_tiplab(aes(color = "black"), size = 2, offset = 7, show.legend = FALSE)
 plot
 
 
