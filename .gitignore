@@ -3,6 +3,7 @@
 # large folders
 logs/
 TOGA2_fish/
-TOGA2_mammal/
+TOGA2_mammal_cow_ref/
+TOGA2_mammal_human_ref/
 input/matrices/
 **/plots/
