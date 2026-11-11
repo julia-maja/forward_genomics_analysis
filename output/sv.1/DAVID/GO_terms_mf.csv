@@ -1,0 +1,10 @@
+"Category","Term","Count","List Total","Pop Hits","Pop Total","P-Value","Benjamini","Fold Enrichment","Bonferroni","FDR","Fisher Exact","Full Term","User Ids"
+"GOTERM_MF_DIRECT","phosphatidylinositol-3,4-bisphosphate binding","2","107","8","17761","4.68e-2","1.00e+0","41.50","9.99e-1","1.00e+0","9.83e-4","GO:0043325~phosphatidylinositol-3,4-bisphosphate binding","SESTD1,HIP1RA"
+"GOTERM_MF_DIRECT","dynactin binding","2","107","8","17761","4.68e-2","1.00e+0","41.50","9.99e-1","1.00e+0","9.83e-4","GO:0034452~dynactin binding","LOC120809572,LOC120812486"
+"GOTERM_MF_DIRECT","phosphatidylinositol-3,5-bisphosphate binding","2","107","8","17761","4.68e-2","1.00e+0","41.50","9.99e-1","1.00e+0","9.83e-4","GO:0080025~phosphatidylinositol-3,5-bisphosphate binding","SESTD1,HIP1RA"
+"GOTERM_MF_DIRECT","JUN kinase binding","2","107","9","17761","5.25e-2","1.00e+0","36.89","1.00e+0","1.00e+0","1.26e-3","GO:0008432~JUN kinase binding","LOC120812447,MAPK8IP2"
+"GOTERM_MF_DIRECT","MAP kinase scaffold activity","2","107","10","17761","5.81e-2","1.00e+0","33.20","1.00e+0","1.00e+0","1.57e-3","GO:0005078~MAP kinase scaffold activity","LOC120812447,MAPK8IP2"
+"GOTERM_MF_DIRECT","NAD+ binding","2","107","15","17761","8.59e-2","1.00e+0","22.13","1.00e+0","1.00e+0","3.59e-3","GO:0070403~NAD+ binding","SIRT5,SIRT6"
+"GOTERM_MF_DIRECT","cytoskeletal adaptor activity","2","107","15","17761","8.59e-2","1.00e+0","22.13","1.00e+0","1.00e+0","3.59e-3","GO:0008093~cytoskeletal adaptor activity","LOC120809572,LOC120812486"
+"GOTERM_MF_DIRECT","dynein complex binding","2","107","16","17761","9.14e-2","1.00e+0","20.75","1.00e+0","1.00e+0","4.08e-3","GO:0070840~dynein complex binding","LOC120809572,LOC120812486"
+

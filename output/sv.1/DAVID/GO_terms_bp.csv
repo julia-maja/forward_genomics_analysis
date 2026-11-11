@@ -1,0 +1,12 @@
+"Category","Term","Count","List Total","Pop Hits","Pop Total","P-Value","Benjamini","Fold Enrichment","Bonferroni","FDR","Fisher Exact","Full Term","User Ids"
+"GOTERM_BP_DIRECT","nitric oxide-cGMP-mediated signaling","2","102","2","16700","1.21e-2","1.00e+0","163.73","8.85e-1","1.00e+0","3.69e-5","GO:0038060~nitric oxide-cGMP-mediated signaling","LOC120810392,LOC120817360"
+"GOTERM_BP_DIRECT","regulation of microtubule cytoskeleton organization","3","102","28","16700","1.24e-2","1.00e+0","17.54","8.91e-1","1.00e+0","6.49e-4","GO:0070507~regulation of microtubule cytoskeleton organization","LOC120809572,LOC120812486,PHLDB2A"
+"GOTERM_BP_DIRECT","positive regulation of receptor-mediated endocytosis","2","102","3","16700","1.80e-2","1.00e+0","109.15","9.61e-1","1.00e+0","1.10e-4","GO:0048260~positive regulation of receptor-mediated endocytosis","LOC120809572,LOC120812486"
+"GOTERM_BP_DIRECT","endothelial cell migration","2","102","6","16700","3.57e-2","1.00e+0","54.58","9.98e-1","1.00e+0","5.45e-4","GO:0043542~endothelial cell migration","PLXND1,PLEKHG6"
+"GOTERM_BP_DIRECT","response to oxygen levels","2","102","6","16700","3.57e-2","1.00e+0","54.58","9.98e-1","1.00e+0","5.45e-4","GO:0070482~response to oxygen levels","LOC120810392,LOC120817360"
+"GOTERM_BP_DIRECT","microtubule anchoring at microtubule organizing center","2","102","7","16700","4.16e-2","1.00e+0","46.78","9.99e-1","1.00e+0","7.60e-4","GO:0072393~microtubule anchoring at microtubule organizing center","LOC120809572,LOC120812486"
+"GOTERM_BP_DIRECT","regulation of JNK cascade","2","102","8","16700","4.74e-2","1.00e+0","40.93","1.00e+0","1.00e+0","1.01e-3","GO:0046328~regulation of JNK cascade","LOC120812447,MAPK8IP2"
+"GOTERM_BP_DIRECT","protein localization to organelle","2","102","8","16700","4.74e-2","1.00e+0","40.93","1.00e+0","1.00e+0","1.01e-3","GO:0033365~protein localization to organelle","LOC120809572,LOC120812486"
+"GOTERM_BP_DIRECT","JNK cascade","2","102","10","16700","5.89e-2","1.00e+0","32.75","1.00e+0","1.00e+0","1.61e-3","GO:0007254~JNK cascade","LOC120812447,MAPK8IP2"
+"GOTERM_BP_DIRECT","defense response to bacterium","2","102","17","16700","9.80e-2","1.00e+0","19.26","1.00e+0","1.00e+0","4.73e-3","GO:0042742~defense response to bacterium","LOC120809998,LOC120809999"
+

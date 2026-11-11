@@ -1,0 +1,5 @@
+"Category","Term","Count","List Total","Pop Hits","Pop Total","P-Value","Benjamini","Fold Enrichment","Bonferroni","FDR","Fisher Exact","Full Term","User Ids"
+"GOTERM_CC_DIRECT","guanylate cyclase complex, soluble","2","109","6","17640","3.62e-2","1.00e+0","53.94","9.56e-1","1.00e+0","5.58e-4","GO:0008074~guanylate cyclase complex, soluble","LOC120810392,LOC120817360"
+"GOTERM_CC_DIRECT","kinetochore","3","109","64","17640","5.86e-2","1.00e+0","7.59","9.94e-1","1.00e+0","7.28e-3","GO:0000776~kinetochore","CENPI,LOC120812784,TPRB"
+"GOTERM_CC_DIRECT","ciliary base","2","109","13","17640","7.68e-2","1.00e+0","24.90","9.99e-1","1.00e+0","2.82e-3","GO:0097546~ciliary base","CEP126,IFT56"
+
