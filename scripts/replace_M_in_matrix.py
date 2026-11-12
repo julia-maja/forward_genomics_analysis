@@ -8,7 +8,7 @@ from pathlib import Path
 # --------------------------------------------------
 
 parser = argparse.ArgumentParser(
-    description="Remove genes with M loss status from gene matrix using TOGA2 loss summaries."
+    description="Update gene matrix using TOGA2 loss summaries."
 )
 
 parser.add_argument(
@@ -59,10 +59,6 @@ matrix = pd.read_csv(
 )
 
 
-# Keep track of genes to remove
-genes_to_remove = set()
-
-
 # --------------------------------------------------
 # 3. Iterate through each species
 # --------------------------------------------------
@@ -70,6 +66,9 @@ genes_to_remove = set()
 for species in matrix.columns:
 
     print(f"Processing {species}...")
+
+    # Scan ALL genes in the matrix
+    all_genes = matrix.index.tolist()
 
     # --------------------------------------------------
     # 4. Find corresponding TOGA2 folder
@@ -96,47 +95,35 @@ for species in matrix.columns:
     # 5. Read loss summary
     # --------------------------------------------------
 
-    loss_file = species_folder / "loss_summary.tsv"
-
-    if not loss_file.exists():
-        print(f"  WARNING: No loss_summary.tsv found for {species}")
-        continue
-
-    loss_summary = pd.read_csv(loss_file, sep="\t")
-
-    # --------------------------------------------------
-    # 6. Check ALL genes for loss status
-    # --------------------------------------------------
+    loss_summary = pd.read_csv(
+        species_folder / "loss_summary.tsv",
+        sep="\t"
+    )
 
     loss_dict = dict(zip(
         loss_summary[gene_column],
         loss_summary[status_column]
     ))
 
-    # Identify all genes with M status
-    m_genes = {
-        gene for gene, status in loss_dict.items()
-        if status == "M" and gene in matrix.index
-    }
+    # --------------------------------------------------
+    # 6. Update matrix based on loss status
+    # --------------------------------------------------
 
-    genes_to_remove.update(m_genes)
+    updated_count = 0
 
-    print(f"  Genes with M status: {len(m_genes)}")
+    for gene in all_genes:
 
+        loss_status = loss_dict.get(gene)
 
-# --------------------------------------------------
-# 7. Remove genes with M status from the matrix
-# --------------------------------------------------
+        if loss_status == "M":
+            matrix.loc[gene, species] = pd.NA
+            updated_count += 1
 
-print(f"\nTotal unique genes to remove: {len(genes_to_remove)}")
-
-matrix = matrix.drop(index=list(genes_to_remove))
-
-print(f"Remaining genes: {len(matrix)}")
+    print(f"  Updated {updated_count} genes")
 
 
 # --------------------------------------------------
-# 8. Save updated matrix
+# 7. Save updated matrix
 # --------------------------------------------------
 
 matrix.to_csv(output_file, sep="\t", na_rep="NA")
